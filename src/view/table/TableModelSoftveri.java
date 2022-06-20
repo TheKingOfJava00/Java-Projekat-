@@ -14,7 +14,16 @@ public class TableModelSoftveri extends DefaultTableModel {
         this.setColumnIdentifiers(colNameSoftveri);
         ArrayList<Softver> softveri = AppCore.getDatabase().getSoftveri();
         for (int i = 0; i < softveri.size(); i++) {
-                    }
+            Object[] data = new Object[6];
+            data[0] = softveri.get(i).getNaziv();
+            data[1] = softveri.get(i).getCetkice();
+            data[2] = softveri.get(i).getModifikatori();
+            data[3] = softveri.get(i).getFormatiFajla();
+            data[4] = softveri.get(i).getAnimationTools();
+            data[5] = softveri.get(i).getRender();
+            // Dodajemo po jedan red za svaki softver, sa odgovarajucim podacima
+            this.addRow(data);
+        }
     }
 
     @Override
