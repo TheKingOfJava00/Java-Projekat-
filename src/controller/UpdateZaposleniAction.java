@@ -57,5 +57,43 @@ public class UpdateZaposleniAction implements ActionListener {
 
         Zaposleni zaposleni = dialog.getZaposleni();
 
+
+        // Ako je zaposleni null, pravimo novog zaposlenog i dodajemo ga u listu zaposlenih
+        boolean success = true;
+        if (zaposleni == null) {
+            zaposleni = new Zaposleni(ime, prezime, jmbg, datumRodjenja, email, new Adresa(Integer.parseInt(broj), ulica, grad), radnoMesto, (ArrayList<Softver>) softveri);
+            success = AppCore.getDatabase().addZaposleni(zaposleni);
+            if (success) {
+                zaposleni.addObserver(AppCore.getDatabase());
+                AppCore.getMainFrame().changeTab(0);
+                dialog.dispose();
+                return;
+            }
+        }
+
+
+        // Provera da li zaposleni sa tim jmbgom vec postoji, prilikom izmene
+        if (!success || AppCore.getDatabase().findZaposleni(jmbg) != null && AppCore.getDatabase().findZaposleni(jmbg) != zaposleni) {
+            JOptionPane.showMessageDialog(null, "Zaposleni with that jmbg already exists!", "WARNING", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+
+        // Ako je vec postojeci, radimo update starih vrednosti
+        zaposleni.setIme(ime);
+        zaposleni.setPrezime(prezime);
+        zaposleni.setEmail(email);
+        zaposleni.setJmbg(jmbg);
+        zaposleni.setDatumRodjenja(datumRodjenja);
+        zaposleni.getAdresa().setUlica(ulica);
+        zaposleni.getAdresa().setBroj(Integer.parseInt(broj));
+        zaposleni.getAdresa().setGrad(grad);
+        zaposleni.setRadnoMesto(radnoMesto);
+        zaposleni.setSoftveri((ArrayList<Softver>) softveri);
+
+
+        dialog.dispose();
+
+
     }
 }
