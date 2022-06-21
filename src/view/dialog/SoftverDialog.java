@@ -60,6 +60,7 @@ public class SoftverDialog extends JDialog {
         btnCancel = new JButton("CANCEL");
         JPanel btnPanel = new JPanel();
         btnPanel.add(btnOk);
+        btnOk.addActionListener(new UpdateSoftverAction(this));
         btnPanel.add(btnCancel);
         btnCancel.addActionListener(e -> dispose());
 
@@ -84,5 +85,41 @@ public class SoftverDialog extends JDialog {
         contentPanel.add(new JLabel("Render"));
         JButton btnRender = new JButton("Render");
 
+        // Popunjavanje informacija o renderu u novom JDialogu
+        btnRender.addActionListener(e -> {
+            JDialog dialog = new JDialog();
+            dialog.setLayout(new BorderLayout());
+
+            JTextField tfNaziv = new JTextField();
+            JTextField tfMaterijali = new JTextField();
+            JTextField tfKamere = new JTextField();
+            JTextField tfSvetlo = new JTextField();
+            JTextField tfObjekti = new JTextField();
+
+            if (render != null) {
+                tfNaziv.setText(render.getNaziv());
+                tfSvetlo.setText(render.getSvetlo());
+                String text = "";
+                for (String s: render.getMaterijali()) {
+                    text += s + ";";
+                }
+                tfMaterijali.setText(text);
+                text = "";
+                for (String s: render.getKamere()) {
+                    text += s + ";";
+                }
+                tfKamere.setText(text);
+                text = "";
+                for (String s: render.getObjekti()) {
+                    text += s + ";";
+                }
+                tfObjekti.setText(text);
+            }
+
+           
+            });
+        });
        
+    }
+
     }
