@@ -121,5 +121,113 @@ public class ZaposleniDialog extends JDialog {
         setLocationRelativeTo(null);
     }
 
+    private void addZaposleni() {
+        setTitle("Add");
+    }
 
+    private void editZaposleni() {
+        tfEmail.setText(zaposleni.getEmail());
+        tfJmbg.setText(zaposleni.getJmbg());
+        tfPrezime.setText(zaposleni.getPrezime());
+        tfIme.setText(zaposleni.getIme());
+        tfUlica.setText(zaposleni.getAdresa().getUlica());
+        tfBroj.setText(String.valueOf(zaposleni.getAdresa().getBroj()));
+        tfGrad.setText(zaposleni.getAdresa().getGrad());
+        tfDatumRodjenja.setText(zaposleni.getDatumRodjenja());
+        cbRadnoMesto.setSelectedItem(zaposleni.getRadnoMesto());
+
+        setTitle("Edit");
+    }
+
+    public Zaposleni getZaposleni() {
+        return zaposleni;
+    }
+
+    public void setZaposleni(Zaposleni zaposleni) {
+        this.zaposleni = zaposleni;
+    }
+
+    public JTextField getTfIme() {
+        return tfIme;
+    }
+
+    public void setTfIme(JTextField tfIme) {
+        this.tfIme = tfIme;
+    }
+
+    public JTextField getTfPrezime() {
+        return tfPrezime;
+    }
+
+    public void setTfPrezime(JTextField tfPrezime) {
+        this.tfPrezime = tfPrezime;
+    }
+
+    public JTextField getTfJmbg() {
+        return tfJmbg;
+    }
+
+    public void setTfJmbg(JTextField tfJmbg) {
+        this.tfJmbg = tfJmbg;
+    }
+
+    public JTextField getTfDatumRodjenja() {
+        return tfDatumRodjenja;
+    }
+
+    public void setTfDatumRodjenja(JTextField tfDatumRodjenja) {
+        this.tfDatumRodjenja = tfDatumRodjenja;
+    }
+
+    public JTextField getTfEmail() {
+        return tfEmail;
+    }
+
+    public void setTfEmail(JTextField tfEmail) {
+        this.tfEmail = tfEmail;
+    }
+
+    public JTextField getTfBroj() {
+        return tfBroj;
+    }
+
+    public JTextField getTfGrad() {
+        return tfGrad;
+    }
+
+    public JTextField getTfUlica() {
+        return tfUlica;
+    }
+
+    public JComboBox<RadnoMesto> getCbRadnoMesto() {
+        return cbRadnoMesto;
+    }
+
+    public void setCbRadnoMesto(JComboBox<RadnoMesto> cbRadnoMesto) {
+        this.cbRadnoMesto = cbRadnoMesto;
+    }
+
+    public JList<Softver> getListSoftveri() {
+        return listSoftveri;
+    }
+
+    public void setListSoftveri(JList<Softver> listSoftveri) {
+        this.listSoftveri = listSoftveri;
+    }
+
+    public JButton getBtnOk() {
+        return btnOk;
+    }
+
+    public void setBtnOk(JButton btnOk) {
+        this.btnOk = btnOk;
+    }
+
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public void setBtnCancel(JButton btnCancel) {
+        this.btnCancel = btnCancel;
+    }
 }
