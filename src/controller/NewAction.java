@@ -22,7 +22,7 @@ public class NewAction extends AbstractAction {
         }
     }
 
-    @Override
+    @Override //prepisivacka uloga 
     public void actionPerformed(ActionEvent e) {
         JDialog dialog = null;
         if (name == null) {
