@@ -19,5 +19,26 @@ public class AboutAction extends AbstractAction {
         putValue(Action.SMALL_ICON, new ImageIcon("src/icons/info-16.png"));
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JPanel contentPanel = new JPanel();
+        contentPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
+        JLabel lblAbout = new JLabel();
+        // https://stackoverflow.com/questions/2152742/java-swing-multiline-labels
+        lblAbout.setText("<html>Nesto o meni <br> Nesto o meni <br> Nesto o meni");
+        contentPanel.add(lblAbout);
+
+        JDialog dialog = new JDialog();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int w = (int) (screenSize.width * 0.3);
+        int h = (int) (screenSize.height * 0.4);
+        dialog.setSize(w, h);
+
+        dialog.setLayout(new BorderLayout());
+        dialog.add(contentPanel, BorderLayout.CENTER);
+
+        dialog.setLocationRelativeTo(null);
+        dialog.setTitle("About");
+        dialog.setVisible(true);
     }
 }
