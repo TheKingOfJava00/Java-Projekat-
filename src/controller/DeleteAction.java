@@ -39,5 +39,28 @@ public class DeleteAction extends AbstractAction {
             col = 0;
         }
 
+        // Uzimamo selektovani red i ako nista nije selektovano vracamo poruku
+        row = table.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "No row selected!", "WARNING", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this entity?", "WARNING",
+                JOptionPane.OK_CANCEL_OPTION);
+        if (response == JOptionPane.OK_OPTION) {
+            if (table instanceof TableZaposleni) {
+                // Nadjemo zaposlenog po jmbgu u bazi, izbrisemo ga
+                String jmbg = table.getModel().getValueAt(row, col).toString();
+                AppCore.getDatabase().deleteZaposleni(jmbg);
+            }
+            if (table instanceof TableSoftveri) {
+                // Nadjemo softver po nazivu u bazi, izbrisemo ga
+                String naziv = table.getModel().getValueAt(row, col).toString();
+                AppCore.getDatabase().deleteSoftver(naziv);
+            }
+            // Vratimo tab na tabelu iz koje smo izbrisali
+            AppCore.getMainFrame().changeTab(tabSelected);
+        }
     }
 }
