@@ -38,7 +38,24 @@ public class UpdateZaposleniAction implements ActionListener {
         RadnoMesto radnoMesto = (RadnoMesto) dialog.getCbRadnoMesto().getSelectedItem();
         List<Softver> softveri = dialog.getListSoftveri().getSelectedValuesList();
 
+
+        // Provera da li su sva polja popunjena (bez praznih polja)
+        if (ime.equals("") || prezime.equals("") || jmbg.equals("") || datum.equals("")
+                || email.equals("") || ulica.equals("") || broj.equals("") || grad.equals("")) {
+            JOptionPane.showMessageDialog(null, "All fields must be filled!", "WARNING", JOptionPane.WARNING_MESSAGE);
+            return;
         }
+
+        // https://www.baeldung.com/java-8-date-time-intro
+        LocalDate datumRodjenja = null;
+        try {
+            datumRodjenja = LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        } catch (DateTimeParseException exception) {
+            JOptionPane.showMessageDialog(null, "Invalid date format!", "WARNING", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Zaposleni zaposleni = dialog.getZaposleni();
 
     }
 }
