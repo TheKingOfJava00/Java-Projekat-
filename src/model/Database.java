@@ -5,7 +5,7 @@ import observer.Observer;
 
 import java.util.ArrayList;
 
-public class Database extends Observable implements Observer {
+public class Database extends Observable implements Observer { //klasa database nasledjuje obsevable
 
     private ArrayList<Zaposleni> zaposleni = new ArrayList<>();
     private ArrayList<Softver> softveri = new ArrayList<>();
