@@ -158,8 +158,69 @@ public class SoftverDialog extends JDialog {
             dialog.setLocationRelativeTo(null);
             dialog.setVisible(true);
         });
-       
+        contentPanel.add(btnRender);
+
+
+        setLayout(new BorderLayout());
+        add(contentPanel, BorderLayout.CENTER);
+        add(btnPanel, BorderLayout.SOUTH);
+
+
+        setSize(600, 500);
+        setLocationRelativeTo(null);
 
     }
 
+    private void addSoftver() {
+        setTitle("Add");
     }
+
+    private void editSoftver() {
+        tfNaziv.setText(softver.getNaziv());
+        String text = "";
+        for (String mod: softver.getModifikatori()) {
+            text += mod + ";";
+        }
+        listModifikatori.setText(text);
+        text = "";
+        for (String form: softver.getFormatiFajla()) {
+            text += form + ";";
+        }
+        listFormati.setText(text);
+        text = "";
+        for (String tool: softver.getAnimationTools()) {
+            text += tool + ";";
+        }
+        listAnimationTools.setText(text);
+
+        setTitle("Edit");
+    }
+
+    public Softver getSoftver() {
+        return softver;
+    }
+
+    public JTextField getTfNaziv() {
+        return tfNaziv;
+    }
+
+    public JList<Cetkica> getListCetkice() {
+        return listCetkice;
+    }
+
+    public JTextField getListModifikatori() {
+        return listModifikatori;
+    }
+
+    public JTextField getListFormati() {
+        return listFormati;
+    }
+
+    public JTextField getListAnimationTools() {
+        return listAnimationTools;
+    }
+
+    public Render getRender() {
+        return render;
+    }
+}
