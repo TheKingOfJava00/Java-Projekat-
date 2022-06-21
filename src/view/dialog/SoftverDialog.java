@@ -116,10 +116,50 @@ public class SoftverDialog extends JDialog {
                 tfObjekti.setText(text);
             }
 
-           
+            JPanel panel = new JPanel(new GridLayout(5, 2));
+            panel.setBorder(new EmptyBorder(20, 20, 20, 20));
+            panel.add(new JLabel("Naziv"));
+            panel.add(tfNaziv);
+            panel.add(new JLabel("Materijali"));
+            panel.add(tfMaterijali);
+            panel.add(new JLabel("Kamere"));
+            panel.add(tfKamere);
+            panel.add(new JLabel("Svetlo"));
+            panel.add(tfSvetlo);
+            panel.add(new JLabel("Objekti"));
+            panel.add(tfObjekti);
+
+            dialog.add(panel, BorderLayout.CENTER);
+
+            JButton btnAdd = new JButton("OK");
+            btnAdd.addActionListener(e1 -> {
+                String naziv = tfNaziv.getText();
+                ArrayList<String> materijali = new ArrayList<>(Arrays.asList(tfMaterijali.getText().split(";")));
+                ArrayList<String> kamere = new ArrayList<>(Arrays.asList(tfKamere.getText().split(";")));
+                ArrayList<String> objekti = new ArrayList<>(Arrays.asList(tfObjekti.getText().split(";")));
+                String svetlo = tfSvetlo.getText();
+
+                if (naziv.equals("") || materijali.size() == 0 || kamere.size() == 0
+                        || objekti.size() == 0 || svetlo.equals("")) {
+                    JOptionPane.showMessageDialog(null, "All fields must be filled!", "WARNING", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                render = new Render(naziv, materijali, kamere, svetlo, objekti);
+
+                dialog.dispose();
+
             });
+
+            dialog.add(btnAdd, BorderLayout.SOUTH);
+
+            dialog.setTitle("Render");
+            dialog.setSize(400, 300);
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
         });
        
+
     }
 
     }
