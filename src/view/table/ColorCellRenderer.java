@@ -19,7 +19,7 @@ public class ColorCellRenderer extends JList<JLabel> implements TableCellRendere
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 
-        setBorder(new EmptyBorder(4, 4, 4, 4));
+        setBorder(new EmptyBorder(5, 5, 5, 5));
 
         ColorRenderer colorRenderer = new ColorRenderer();
         colorRenderer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -38,13 +38,14 @@ public class ColorCellRenderer extends JList<JLabel> implements TableCellRendere
                     color = null;
                 }
                 JLabel lbl = new JLabel();
+                lbl.setForeground(color);
                 lbl.setText(vector.elementAt(i).getBoja());
                 colors[i] = lbl;
             }
             setListData(colors);
         }
 
-        setToolTipText("Double click");
+        setToolTipText("Double click to expand");
 
         if (isSelected) {
             setBackground(UIManager.getColor("Table.selectionBackground"));
