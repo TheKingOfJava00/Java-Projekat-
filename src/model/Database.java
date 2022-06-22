@@ -5,12 +5,11 @@ import observer.Observer;
 
 import java.util.ArrayList;
 
-public class Database extends Observable implements Observer { //klasa database nasledjuje obsevable
+public class Database extends Observable implements Observer {
 
     private ArrayList<Zaposleni> zaposleni = new ArrayList<>();
     private ArrayList<Softver> softveri = new ArrayList<>();
     private ArrayList<Cetkica> cetkice = new ArrayList<>();
-    private ArrayList<Render> renderi = new ArrayList<>();
 
 
     public Database() {
@@ -88,14 +87,6 @@ public class Database extends Observable implements Observer { //klasa database 
 
     public ArrayList<Cetkica> getCetkice() {
         return cetkice;
-    }
-
-    public ArrayList<Render> getRenderi() {
-        return renderi;
-    }
-
-    public void setRenderi(ArrayList<Render> renderi) {
-        this.renderi = renderi;
     }
 
     public void setCetkice(ArrayList<Cetkica> cetkice) {
