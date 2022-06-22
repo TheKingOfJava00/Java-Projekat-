@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 
 // Klasa zaduzena za generisanje podataka za bazu podataka
+//https://www.youtube.com/watch?v=5vzCjvUwMXg&ab_channel=Telusko
 public class DatabaseUtil {
 
     private static final int ENTITY_COUNT = 30;
