@@ -5,6 +5,8 @@ import java.util.List;
 
 
 // Klasa koju nasledjuju sve klase koje zele da imaju svoje "slusaoce" (Observere) kako bi im javili da se osveze
+// https://www.youtube.com/watch?v=o_Xbi8ZmkE8&ab_channel=RamNJava
+
 public class Observable {
 
     public List<Observer> observers = new ArrayList<>();
