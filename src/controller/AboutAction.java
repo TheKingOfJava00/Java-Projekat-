@@ -25,7 +25,7 @@ public class AboutAction extends AbstractAction {
         contentPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
         JLabel lblAbout = new JLabel();
         // https://stackoverflow.com/questions/2152742/java-swing-multiline-labels
-        lblAbout.setText("<html>Nesto o meni <br> Nesto o meni <br> Nesto o meni");
+        lblAbout.setText("<html>Antonije Katrina AI 21/2019-TheKingOfJava00 <br> model,observer,utils, deo controller-a <br> <br> Jovana Maletin AI 7/2019- jovanamaletin <br> Djordje Rankvic AI 13/2019-thebananabomb <br> Dusan Stankovic AI 61/2019-StankovicOISIS");
         contentPanel.add(lblAbout);
 
         JDialog dialog = new JDialog();
