@@ -1,8 +1,10 @@
 package model;
 
+import observer.Observable;
+
 import java.util.ArrayList;
 
-public class Softver {
+public class Softver extends Observable {
 
     private String naziv;
     private ArrayList<Cetkica> cetkice = new ArrayList<>();
@@ -52,6 +54,7 @@ public class Softver {
 
     public void setCetkice(ArrayList<Cetkica> cetkice) {
         this.cetkice = cetkice;
+        notifyObservers(this);
     }
 
     public ArrayList<String> getModifikatori() {
@@ -60,6 +63,7 @@ public class Softver {
 
     public void setModifikatori(ArrayList<String> modifikatori) {
         this.modifikatori = modifikatori;
+        notifyObservers(this);
     }
 
     public ArrayList<String> getFormatiFajla() {
@@ -68,6 +72,7 @@ public class Softver {
 
     public void setFormatiFajla(ArrayList<String> formatiFajla) {
         this.formatiFajla = formatiFajla;
+        notifyObservers(this);
     }
 
     public ArrayList<String> getAnimationTools() {
@@ -76,6 +81,7 @@ public class Softver {
 
     public void setAnimationTools(ArrayList<String> animationTools) {
         this.animationTools = animationTools;
+        notifyObservers(this);
     }
 
     public Render getRender() {
@@ -84,5 +90,6 @@ public class Softver {
 
     public void setRender(Render render) {
         this.render = render;
+        notifyObservers(this);
     }
 }
