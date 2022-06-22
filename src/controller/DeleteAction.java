@@ -59,7 +59,7 @@ public class DeleteAction extends AbstractAction {
                 String naziv = table.getModel().getValueAt(row, col).toString();
                 AppCore.getDatabase().deleteSoftver(naziv);
             }
-            // Vratimo tab na tabelu iz koje smo izbrisali
+            
             AppCore.getMainFrame().changeTab(tabSelected);
         }
     }
